@@ -59,17 +59,16 @@ export const updateUser = async (
   return;
 };
 
-// Delete user by ID
 export const deleteUser = async (
   req: Request,
   res: Response
 ): Promise<void> => {
   const user = await User.findByPk(req.params.id);
   if (!user) {
-    res.status(404).json({ message: "User not found" });
+    res.status(404).json({ message: "Not found" });
     return;
   }
   await user.destroy();
-  res.json({ message: "User deleted successfully" });
+  res.json({ message: "User removed successfully" });
   return;
 };
